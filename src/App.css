@@ -1,0 +1,538 @@
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 252px minmax(0, 1fr);
+}
+
+.sidebar {
+  background: #fff;
+  border-right: 1px solid #eeeaf5;
+  padding: 28px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 5px;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 15px;
+  background: #eee7ff;
+  color: #7455c7;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.brand h1 {
+  margin: 0;
+  font: 800 19px 'Nunito', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.brand span {
+  display: block;
+  margin-top: 4px;
+  font-size: 8px;
+  letter-spacing: 1.1px;
+  color: #968da7;
+  font-weight: 700;
+}
+
+.nav-label {
+  margin: 43px 10px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #a49bb3;
+}
+
+.navigation {
+  display: grid;
+  gap: 7px;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 13px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: #777085;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item:hover {
+  background: #f8f5ff;
+  color: #7556c9;
+}
+
+.nav-item.active {
+  color: #7354c4;
+  background: #f0eaff;
+}
+
+.nav-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 19px;
+}
+
+.new-label {
+  margin-left: auto;
+  font-size: 8px;
+  background: #e8e0ff;
+  color: #7455c7;
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.study-reminder {
+  margin-top: 35px;
+  padding: 17px 15px;
+  border: 1px solid #f0e8fb;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fbf7ff, #fff8f5);
+}
+
+.study-reminder > span {
+  font-size: 22px;
+}
+
+.study-reminder h3 {
+  margin: 11px 0 6px;
+  font: 800 14px 'Nunito', sans-serif;
+}
+
+.study-reminder p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #81778f;
+}
+
+.sidebar-footer {
+  text-align: center;
+  margin: 22px 0 0;
+  font-size: 10px;
+  color: #a39bad;
+}
+
+.main-area {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  min-height: 91px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 38px;
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid #eeeaf5;
+}
+
+.breadcrumb {
+  margin: 0 0 5px;
+  font-size: 11px;
+  color: #9c93aa;
+}
+
+.topbar h2 {
+  margin: 0;
+  font: 800 22px 'Nunito', sans-serif;
+}
+
+.profile-placeholder {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #7455c7;
+  background: #eee7ff;
+  font-weight: 800;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1240px;
+  padding: 34px 38px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.welcome-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  min-height: 240px;
+  padding: 32px 35px;
+  overflow: hidden;
+  border: 1px solid #e9e0fa;
+  border-radius: 22px;
+  background: linear-gradient(115deg, #f0eaff 0%, #f9f3ff 60%, #fff2ed 100%);
+}
+
+.welcome-card > div:first-child {
+  max-width: 520px;
+}
+
+.eyebrow {
+  display: block;
+  color: #896acb;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.welcome-card h2,
+.panel h2 {
+  margin: 13px 0 9px;
+  font: 800 clamp(22px, 2.5vw, 30px) 'Nunito', sans-serif;
+  letter-spacing: -0.6px;
+}
+
+.welcome-card p,
+.panel > p {
+  color: #797187;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 13px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 10px;
+  background: #795bc9;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 5px 13px #795bc926;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.primary-button:hover {
+  background: #6345b2;
+  transform: translateY(-1px);
+}
+
+.welcome-art {
+  display: grid;
+  place-items: center;
+  width: 125px;
+  height: 125px;
+  flex-shrink: 0;
+  border-radius: 36px;
+  background: #ffffff9c;
+  font-size: 60px;
+  transform: rotate(5deg);
+}
+
+.section-heading {
+  margin: 35px 0 18px;
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  font: 800 19px 'Nunito', sans-serif;
+}
+
+.section-heading p {
+  margin: 0;
+  font-size: 12px;
+  color: #898196;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.feature-card {
+  min-width: 0;
+  padding: 22px;
+  text-align: left;
+  border: 1px solid #eeeaf5;
+  border-radius: 17px;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 25px #3c27530c;
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  font-size: 21px;
+}
+
+.lilac { background: #f0eaff; color: #8060cf; }
+.peach { background: #fff0e8; color: #d98b61; }
+.mint { background: #e8f8ef; color: #4eaa7b; }
+.blue { background: #eaf2ff; color: #5d8fce; }
+
+.feature-card h3 {
+  margin: 17px 0 7px;
+  font: 800 15px 'Nunito', sans-serif;
+}
+
+.feature-card p {
+  min-height: 37px;
+  margin: 0;
+  color: #898196;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #795bc9;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.bottom-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 23px;
+  padding: 19px;
+  border: 1px solid #f0e9f8;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.tip-icon {
+  font-size: 23px;
+}
+
+.bottom-tip h3 {
+  margin: 1px 0 5px;
+  font: 800 13px 'Nunito', sans-serif;
+}
+
+.bottom-tip p {
+  margin: 0;
+  color: #898196;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.panel {
+  padding: 30px;
+  border: 1px solid #eeeaf5;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.panel h2 {
+  font-size: 26px;
+}
+
+.panel label {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.panel textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  padding: 15px;
+  border: 1px solid #e5deef;
+  border-radius: 12px;
+  color: #332d43;
+  background: #fdfcff;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.panel textarea::placeholder {
+  color: #aaa2b6;
+}
+
+.placeholder-box {
+  margin-top: 22px;
+  padding: 28px 20px;
+  border: 1px dashed #dcd1ef;
+  border-radius: 13px;
+  color: #81778f;
+  background: #fcfaff;
+  text-align: center;
+  font-size: 13px;
+}
+
+.page-footer {
+  padding: 18px 25px;
+  text-align: center;
+  color: #a39bad;
+  font-size: 10px;
+}
+
+@media (min-width: 1400px) {
+  .feature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 205px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding-inline: 12px;
+  }
+
+  .topbar,
+  .page-content {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .welcome-card {
+    padding: 25px;
+  }
+
+  .welcome-art {
+    width: 90px;
+    height: 90px;
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 650px) {
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    min-height: auto;
+    padding: 15px 13px 10px;
+    border-right: 0;
+    border-bottom: 1px solid #eeeaf5;
+  }
+
+  .brand {
+    padding: 0 3px 13px;
+  }
+
+  .nav-label,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 3px 0 5px;
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 10px;
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .nav-icon {
+    width: auto;
+    font-size: 16px;
+  }
+
+  .new-label {
+    display: none;
+  }
+
+  .topbar {
+    min-height: 75px;
+    padding: 14px 18px;
+  }
+
+  .topbar h2 {
+    font-size: 19px;
+  }
+
+  .page-content {
+    padding: 20px 15px;
+  }
+
+  .welcome-card {
+    min-height: auto;
+    padding: 23px 20px;
+  }
+
+  .welcome-art {
+    display: none;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature-card {
+    padding: 18px;
+  }
+
+  .feature-card p {
+    min-height: 0;
+  }
+
+  .panel {
+    padding: 21px 17px;
+  }
+
+  .panel h2 {
+    font-size: 23px;
+  }
+}
