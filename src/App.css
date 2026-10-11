@@ -536,3 +536,41 @@
     font-size: 23px;
   }
 }
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-email {
+  color: #655b75;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.logout-button {
+  padding: 9px 14px;
+  border: 1px solid #e3ddeb;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #7952b5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #f5f0ff;
+}
+
+@media (max-width: 600px) {
+  .user-profile {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  .user-email {
+    max-width: 180px;
+    font-size: 11px;
+  }
+}

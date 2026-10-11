@@ -1,6 +1,7 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import Auth from "./Auth";
+import { supabase } from "./lib/supabase";
 
 const navigation = [
   { name: "Dashboard", icon: "⌂" },
@@ -12,8 +13,38 @@ const navigation = [
 ];
 
 function App() {
+  const [session, setSession] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
   const [activePage, setActivePage] = useState("Dashboard");
   const [studyText, setStudyText] = useState("");
+
+    useEffect(() => {
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (error) {
+        console.error("Could not retrieve session:", error.message);
+      }
+
+      setSession(data?.session ?? null);
+      setAuthLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      alert(error.message);
+    }
+  }
 
   function renderPage() {
     switch (activePage) {
@@ -181,6 +212,14 @@ function App() {
     }
   }
 
+    if (authLoading) {
+    return <div className="auth-page">Loading StudySpark AI...</div>;
+  }
+
+  if (!session) {
+    return <Auth />;
+  }
+
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -228,8 +267,16 @@ function App() {
             <p className="breadcrumb">Workspace / {activePage}</p>
             <h2>{activePage}</h2>
           </div>
-          <div className="profile-placeholder" title="Profile placeholder">
-            S
+                    <div className="user-profile">
+            <span className="user-email">
+              {session.user.email}
+            </span>
+            <button
+              className="logout-button"
+              onClick={handleLogout}
+            >
+              Log out
+            </button>
           </div>
         </header>
 
