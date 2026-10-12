@@ -18,6 +18,8 @@ function App() {
 
   const [activePage, setActivePage] = useState("Dashboard");
   const [studyText, setStudyText] = useState("");
+  const [generatedNotes, setGeneratedNotes] = useState("");
+const [isGenerating, setIsGenerating] = useState(false);
 
     useEffect(() => {
     supabase.auth.getSession().then(({ data, error }) => {
@@ -46,6 +48,41 @@ function App() {
     }
   }
 
+  async function generateNotes() {
+  if (!studyText.trim()) {
+    alert("Please enter your study material first!");
+    return;
+  }
+
+  setIsGenerating(true);
+  setGeneratedNotes("");
+
+  try {
+    const response = await fetch("/api/generate-notes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: studyText,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to generate notes.");
+    }
+
+    setGeneratedNotes(data.notes);
+  } catch (error) {
+    console.error("Note generation error:", error);
+    alert(error.message || "Unable to generate notes. Please try again.");
+  } finally {
+    setIsGenerating(false);
+  }
+}
+
   function renderPage() {
     switch (activePage) {
       case "Study Notes":
@@ -66,14 +103,20 @@ function App() {
               rows={8}
             />
             <button
-              className="primary-button"
-              onClick={() =>
-                alert("The AI generation feature will be added on Day 3!")
-              }
-            >
-              ✦ Generate Notes
-            </button>
-          </section>
+  className="primary-button"
+  onClick={generateNotes}
+  disabled={isGenerating}
+>
+  {isGenerating ? "Generating Notes..." : "Generate Notes"}
+</button>
+
+{generatedNotes && (
+  <div className="generated-notes">
+    <h3>Your AI-Generated Study Notes</h3>
+    <pre>{generatedNotes}</pre>
+  </div>
+)}
+</section>
         );
 
       case "Quiz":
